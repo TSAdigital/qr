@@ -10,6 +10,10 @@ services:
       - db
     networks:
       - yii2-network
+    command: >
+        /bin/sh -c "composer install &&
+        php yii migrate --interactive=0 &&
+        apache2-foreground"
 
   db:
     image: mysql:5.7
